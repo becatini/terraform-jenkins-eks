@@ -16,18 +16,18 @@ module "vpc" {
     #"Name"        = "eks-vpc"
     #"Terraform"   = "true"
     #"Environment" = "dev"
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/eks-test" = "shared"
   }
 
   public_subnet_tags = {
     #"Name" = "eks-subnet"
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/eks-test" = "shared"
     "kubernetes.io/role/elb" = 1
   }
 
   private_subnet_tags = {
     #"Name" = "eks-subnet"
-    "kubernetes.io/cluster/my-eks-cluster" = "shared"
+    "kubernetes.io/cluster/eks-test" = "shared"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
@@ -39,6 +39,8 @@ module "eks" {
 
   cluster_name    = "eks-test"
   cluster_version = "1.24"
+
+  cluster_endpoint_public_access = true
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets

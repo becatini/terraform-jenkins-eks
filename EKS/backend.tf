@@ -1,7 +1,7 @@
-terraform {
-  backend "s3" {
-    bucket = "cicd-terraform-eks"
-    key    = "eks/terraform.tfstate"
-    region = "us-east-1"
-  }
-}
+#terraform {
+#    backend "s3" {
+#        bucket = "bucket_name"
+#        key = "eks/terraform.tfstate"
+#        region = "us-east-1"
+#    }
+#}
